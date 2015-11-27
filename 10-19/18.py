@@ -21,15 +21,22 @@ for line in input.split("\n"):
 	for num in line.split(" "):
 		lineList.append(int(num))
 	k.append(lineList)
+#k = list(reversed(k))
 
-for y in range(len(k)-2, -1, -1):
-	for x in range(len(k[y])):
-		path1 = 1
-		path2 = 0
-		if x + 1 >= 0 and  x + 1 < len(k[y-1])-1:
-			path1 = k[y-1][x+1]
-		if x >= 0 and  x < len(k[y-1]) - 1:
-			path2 = k[y-1][x+1]
-		print str(path1)
+def recursive_row_sum(data, num):
+	for i in range(len(data[num])):
+		choice1 = data[num+1][i]
+		choice2 = data[num+1][i+1]
+		if choice1 > choice2:
+			data[num][i] += choice1
+		else:
+			data[num][i] += choice2
+	if len(data[num]) == 1:
+		return data[num][0]
+	else:
+		return recursive_row_sum(data,num-1)
+
+total = recursive_row_sum(k, len(k) - 2)
+print total
 
 	

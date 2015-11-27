@@ -6,7 +6,7 @@ def name_value(pos, name):
 		value += ord(char) - 64
 	return value * (pos)
 
-with open("names.txt","r") as f:
+with open("names-22.txt","r") as f:
 	contents = f.read()
 
 contents = contents.split(",")
