@@ -23,4 +23,4 @@ for x in range(0,10000):
 			print x*y
 			products.append(x*y)
 
-print sum(products)
+print "Total: " + str(sum(products))
