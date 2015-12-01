@@ -3,17 +3,8 @@ message = ''
 with open('59.txt','r') as f:
 	message = f.read()
 
-contents = ''
-with open("59-words.txt","r") as f:
-	contents = f.read()
-
-contents = contents.split(",")
-parsed_contents = list()
-for name in contents:
-	parsed_contents.append(name.strip("\""))
 
 message = message.split(',')
-words = parsed_contents
 highest_word_score = 0
 for a in range(ord('a'), ord('z') + 1):
 	for b in range(ord('a'), ord('z') + 1):
@@ -29,7 +20,7 @@ for a in range(ord('a'), ord('z') + 1):
 				elif currKey == 2:
 					cipher = c
 				newChar = str(unichr((int(char) ^ cipher)))
-				if newChar in "#$%^&*[]{}|~`":
+				if newChar in "#$%^&*[]{}|~`+=<>@":
 					continue
 				decrypted += newChar
 				currKey += 1
@@ -39,4 +30,4 @@ for a in range(ord('a'), ord('z') + 1):
 			if word_score > highest_word_score:
 				highest_word_score = word_score
 				print decrypted
-				print sum([ord(i) for i in list(decrypted)])
+				print "Key: \'" + str((unichr(a) + unichr(b) + unichr(c))) + "\' Sum: " +str(sum([ord(i) for i in list(decrypted)]))
